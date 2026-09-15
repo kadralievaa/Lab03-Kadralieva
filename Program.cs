@@ -141,27 +141,52 @@
 // Console.WriteLine($"Число чётное: {isEven}");
 
 
+// Console.WriteLine();
+// Console.WriteLine("Инкремент в выражении");
+
+// // постфикс сначала отдаёт старое значение, потом увеличивает
+// int a = 5;
+// int b = a++;
+// // a стало 6, b получило старое значение 5
+// Console.WriteLine($"a = 5; b = a++;   a = {a}, b = {b}");
+
+// //префикс сначала увеличивает, потом отдаёт новое значение
+// int c = 5;
+// int d = ++c;
+// // c стало 6, d получило уже новое значение 6
+// Console.WriteLine($"c = 5; d = ++c;   c = {c}, d = {d}");
+
+// // смешанное в одном выражении
+// int x = 10;
+// int y = x++ + ++x;
+// // x++ отдаёт 10 (x становится 11), ++x увеличивает до 12 и отдаёт 12
+// // получается, y = 10 + 12 = 22, x = 12
+// Console.WriteLine($"x = 10; y = x++ + ++x;   x = {x}, y = {y}");
+
+//
 Console.WriteLine();
-Console.WriteLine("Инкремент в выражении");
+Console.WriteLine("Калькулятор скидки");
 
-// постфикс сначала отдаёт старое значение, потом увеличивает
-int a = 5;
-int b = a++;
-// a стало 6, b получило старое значение 5
-Console.WriteLine($"a = 5; b = a++;   a = {a}, b = {b}");
+Console.Write("Введите сумму покупки: ");
+double purchaseSum = double.Parse(Console.ReadLine());
 
-//префикс сначала увеличивает, потом отдаёт новое значение
-int c = 5;
-int d = ++c;
-// c стало 6, d получило уже новое значение 6
-Console.WriteLine($"c = 5; d = ++c;   c = {c}, d = {d}");
+Console.Write("Есть карта постоянного клиента? (1 - да, 0 - нет): ");
+int cardInput = int.Parse(Console.ReadLine());
+bool hasCard = (cardInput == 1);
 
-// смешанное в одном выражении
-int x = 10;
-int y = x++ + ++x;
-// x++ отдаёт 10 (x становится 11), ++x увеличивает до 12 и отдаёт 12
-// получается, y = 10 + 12 = 22, x = 12
-Console.WriteLine($"x = 10; y = x++ + ++x;   x = {x}, y = {y}");
+Console.Write("Введите количество товаров в чеке: ");
+int itemsCount = int.Parse(Console.ReadLine());
+
+bool enoughSum = purchaseSum >= 3000;
+bool enoughItems = itemsCount >= 3;
+
+bool eligibleForDiscount = (enoughSum && enoughItems) || hasCard;
+
+Console.WriteLine();
+Console.WriteLine($"Сумма >= 3000: {enoughSum}");
+Console.WriteLine($"Товаров >= 3: {enoughItems}");
+Console.WriteLine($"Есть карта: {hasCard}");
+Console.WriteLine($"Скидка положена: {eligibleForDiscount}");
 
 
 
